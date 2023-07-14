@@ -6,6 +6,7 @@ class PublicationsController < ApplicationController
   end
 
 
+
   # GET /publications or /publications.json
   def index
     @publications = Publication.all
@@ -13,7 +14,9 @@ class PublicationsController < ApplicationController
 
   # GET /publications/1 or /publications/1.json
   def show
-    @comments = Comment.all
+    @publication = Publication.find(params[:id])
+    @comments = @publication.comments
+    @comment = Comment.new
   end
 
   # GET /publications/new
@@ -29,6 +32,7 @@ class PublicationsController < ApplicationController
   def create
     @publication = Publication.new(publication_params)
     @publication.user_id = current_user.id
+    @comment.user = current_user
 
     respond_to do |format|
       if @publication.save

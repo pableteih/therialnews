@@ -1,13 +1,12 @@
-<h1>Publications</h1>
+<%= link_to "New publication", new_publication_path, type:"button", class:"btn btn-primary" %> <br/><br/>
 
-<div id="publications">
+
+<h1>Publicaciones</h1>
+
+
+<div id="publications" >
   <% @publications.each do |publication| %>
-    <%= render publication %>
-    <p>
-      <%= link_to "Show this publication", publication %>
-    </p>
-  <% end %>
-</div>
+    <%= render publication %><br/>
+    <%= link_to "Show this publication", publication, type:"button", class:"btn btn-primary" %><br/>
+  <% end %> 
 
-  
-<%= link_to "New publication", new_publication_path %>

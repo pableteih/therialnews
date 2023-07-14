@@ -9,8 +9,29 @@
     <%end%>
   <%end%>
 
+   
+
    <%= link_to "Back to publications", publications_path %>
   
 
-
 </div>
+
+<h3>Comments:</h3>
+
+  <% @comments.each do |comment| %>
+    <%= comment.content%><br/>
+  <% end %>
+
+  <%= form_with(model: [@publication, Comment.new]) do |form| %>
+  <div>
+    <%= form.label :content, style: "display: block" %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div>
+    <%= form.submit "Add Comment" %>
+  </div>
+<% end %>
+  
+</div>
+

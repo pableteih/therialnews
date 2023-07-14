@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/1 or /comments/1.json
   def show
+
   end
 
   # GET /comments/new
@@ -25,14 +26,17 @@ class CommentsController < ApplicationController
 
   # POST /comments or /comments.json
   def create
-    @comment = Comment.new(comment_params)
+    
+    @publication = Publication.find(params[:publication_id])
+    @comment = @publication.comments.build(comment_params)
+    @comment.user = current_user
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to comment_url(@comment), notice: "Comment was successfully created." }
-        format.json { render :show, status: :created, location: @comment }
+        format.html { redirect_to @publication, notice: "Comment was successfully created." }
+        format.json { render :show, status: :created, location: @publication }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render template: 'publications/show' }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end

@@ -1,21 +1,11 @@
 <div id="<%= dom_id publication %>">
-  <p>
-    <%= image_tag publication.image %>
-  </p>
 
-  <p>
-    <strong>Title:</strong>
-    <%= publication.title %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= publication.description %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= publication.user.name %>
-  </p>
-
+  <div class="card" style="width: 23rem;">
+      <%= image_tag publication.image, class:"card-img-top" %>
+    <div class="card-body">
+      <h3><%= publication.title %></h3>
+      <%= publication.description %> <br/><br/>
+      <h6><%= publication.user.name %></h6>
+    </div>
+  </div>
 </div>

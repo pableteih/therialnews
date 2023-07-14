@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :comments
-  resources :publications
+  resources :publications do
+    resources :comments, only: [:create]
+  end
   get 'homes/index'
   devise_for :users, controllers: {
   sessions: "users/sessions",
