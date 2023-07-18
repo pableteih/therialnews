@@ -1,43 +1,43 @@
 <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "signup-form" }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "Nombre" %>
+    <%= f.text_field :name, autofocus: true, autocomplete: "Nombre", class: "form-control" %>
   </div>
 
-    <div class="field">
+  <div class="form-group">
     <%= f.label :age %><br />
-    <%= f.text_field :age, autofocus: true, autocomplete: "Edad" %>
+    <%= f.text_field :age, autofocus: true, autocomplete: "Edad", class: "form-control" %>
   </div>
 
-    <div class="field">
+  <div class="form-group">
     <%= f.label :phone %><br />
-    <%= f.text_field :phone, autofocus: true, autocomplete: "teléfono" %>
+    <%= f.text_field :phone, autofocus: true, autocomplete: "teléfono", class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "Email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "Email", class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "Nueva contraseña" %>
+    <%= f.password_field :password, autocomplete: "Nueva contraseña", class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "confirme contraseña" %>
+    <%= f.password_field :password_confirmation, autocomplete: "confirme contraseña", class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up", class:"btn btn-outline-secondary" %>
   </div>
 <% end %>
 

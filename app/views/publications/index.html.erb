@@ -1,12 +1,17 @@
-<%= link_to "New publication", new_publication_path, type:"button", class:"btn btn-primary" %> <br/><br/>
+
+<div class="contenido">
+  <%= link_to "Nueva Publicación", new_publication_path, type:"button", class:"btn btn-outline-secondary" %> <br/><br/>
 
 
-<h1>Publicaciones</h1>
+  <h1>Publicaciones</h1>
 
 
-<div id="publications" >
-  <% @publications.each do |publication| %>
-    <%= render publication %><br/>
-    <%= link_to "Show this publication", publication, type:"button", class:"btn btn-primary" %><br/>
-  <% end %> 
+  <div id="publications" >
+    <% @publications.each do |publication| %>
+    <div class="publication">
+      <%= render publication %>
+      <%= link_to "Ir a la publicación", publication, type:"button", class:"btn btn-outline-secondary" %>
+    </div>
+    <% end %> 
+</div>
 

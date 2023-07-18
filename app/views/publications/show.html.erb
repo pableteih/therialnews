@@ -1,37 +1,50 @@
-<%= render @publication %>
-
-<div> 
- 
-  <% if user_signed_in?%>
-    <% if current_user.id == @publication.user_id %>
-      <%= link_to "Editar publicación", edit_publication_path(@publication) %>
-      <%= button_to "Eliminar", @publication, method: :delete %>
-    <%end%>
-  <%end%>
-
-   
-
-   <%= link_to "Back to publications", publications_path %>
-  
-
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <div class="publication-details col-6 mx-auto">
+      <%= render @publication %>
+      <div class="actions">
+        <% if user_signed_in? %>
+          <% if current_user.id == @publication.user_id %>
+            <div class="d-inline-block">
+              <%= link_to "Editar publicación", edit_publication_path(@publication), class:"btn btn-outline-secondary" %>
+            </div>
+            <div class="d-inline-block">
+              <%= button_to "Eliminar", @publication, method: :delete, class:"btn btn-outline-secondary", data: { confirm: "¿Estás seguro de que deseas eliminar esta publicación?" } %>
+            </div>
+          <% end %>
+        <% end %>
+        <%= link_to "Back to publications", publications_path, class:"btn btn-outline-secondary" %>
+      </div>
+    </div>
+  </div>
 </div>
 
-<h3>Comments:</h3>
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <div class="col-6 mx-auto">
+      <h3>Comments:</h3>
 
-  <% @comments.each do |comment| %>
-    <%= comment.content%><br/>
-  <% end %>
-
-  <%= form_with(model: [@publication, Comment.new]) do |form| %>
-  <div>
-    <%= form.label :content, style: "display: block" %>
-    <%= form.text_area :content %>
+      <% @comments.each do |comment| %>
+        <div class="card comment-card mb-2">
+          <div class="card-body">
+            <%= comment.content %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
-
-  <div>
-    <%= form.submit "Add Comment" %>
-  </div>
-<% end %>
-  
 </div>
 
+  <div class="comment-form">
+    <%= form_with(model: [@publication, Comment.new]) do |form| %>
+      <div class="form-group">
+        <%= form.label :content %>
+        <%= form.text_area :content, class: "form-control" %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit "Add Comment", class:"btn btn-outline-secondary" %>
+      </div>
+    <% end %>
+  </div>
+</div>

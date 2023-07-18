@@ -1,8 +1,7 @@
 <%= form_with(model: publication) do |form| %>
   <% if publication.errors.any? %>
-    <div style="color: red">
+    <div class="error-message">
       <h2><%= pluralize(publication.errors.count, "error") %> prohibited this publication from being saved:</h2>
-
       <ul>
         <% publication.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,24 +10,22 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :image, style: "display: block" %>
-    <%= form.text_field :image %>
+  <div class="form-group">
+    <%= form.label :Imagen, class: "form-label" %>
+    <%= form.text_field :image, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+  <div class="form-group">
+    <%= form.label :Título, class: "form-label" %>
+    <%= form.text_field :title, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
+  <div class="form-group">
+    <%= form.label :Descripción, class: "form-label" %>
+    <%= form.text_area :description, class: "form-control" %>
   </div>
 
-
-
-  <div>
-    <%= form.submit %>
+  <div class="form-group">
+    <%= form.submit "Publicar", class:"btn btn-outline-secondary" %>
   </div>
 <% end %>
