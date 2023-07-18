@@ -4,5 +4,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :publications
-  enum :role, [:normal_user, :author, :admin]
+  enum :role {normal_user: 0, author: 1, admin: 2}
 end
