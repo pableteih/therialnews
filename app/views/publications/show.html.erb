@@ -13,7 +13,7 @@
             </div>
           <% end %>
         <% end %>
-        <%= link_to "Back to publications", publications_path, class:"btn btn-outline-secondary" %>
+        <%= link_to "Regresar a las publicaciones", publications_path, class:"btn btn-outline-secondary" %>
       </div>
     </div>
   </div>
@@ -27,6 +27,7 @@
       <% @comments.each do |comment| %>
         <div class="card comment-card mb-2">
           <div class="card-body">
+            <p>Usuario: <%= comment.user.name %></p>
             <%= comment.content %>
           </div>
         </div>
@@ -38,12 +39,12 @@
   <div class="comment-form">
     <%= form_with(model: [@publication, Comment.new]) do |form| %>
       <div class="form-group">
-        <%= form.label :content %>
+        
         <%= form.text_area :content, class: "form-control" %>
       </div>
 
       <div class="actions">
-        <%= form.submit "Add Comment", class:"btn btn-outline-secondary" %>
+        <%= form.submit "Agregar un comentario", class:"btn btn-outline-secondary" %>
       </div>
     <% end %>
   </div>
